@@ -96,37 +96,17 @@
     <None Include="test1.sh">
       <DeploymentContent>false</DeploymentContent>
     </None>
-    <None Include="tests\test_base08num_01.diff" />
-    <None Include="tests\test_base08num_01.output" />
     <None Include="tests\test_base08num_01.txt.expected" />
-    <None Include="tests\test_base08num_02.diff" />
-    <None Include="tests\test_base08num_02.output" />
     <None Include="tests\test_base08num_02.txt.expected" />
-    <None Include="tests\test_base08num_03.diff" />
-    <None Include="tests\test_base08num_03.output" />
     <None Include="tests\test_base08num_03.txt.expected" />
-    <None Include="tests\test_base16num_01.diff" />
-    <None Include="tests\test_base16num_01.output" />
     <None Include="tests\test_base16num_01.txt.expected" />
-    <None Include="tests\test_base16num_02.diff" />
-    <None Include="tests\test_base16num_02.output" />
     <None Include="tests\test_base16num_02.txt.expected" />
-    <None Include="tests\test_base16num_03.diff" />
-    <None Include="tests\test_base16num_03.output" />
     <None Include="tests\test_base16num_03.txt.expected" />
-    <None Include="tests\test_mixed_01.diff" />
-    <None Include="tests\test_mixed_01.output" />
     <None Include="tests\test_mixed_01.txt.expected" />
-    <None Include="tests\test_mixed_02.diff" />
-    <None Include="tests\test_mixed_02.output" />
     <None Include="tests\test_mixed_02.txt.expected" />
-    <None Include="tests\test_mixed_03.output" />
     <None Include="tests\test_mixed_03.txt.expected" />
-    <None Include="tests\test_realnum_01.output" />
     <None Include="tests\test_realnum_01.txt.expected" />
-    <None Include="tests\test_realnum_02.output" />
     <None Include="tests\test_realnum_02.txt.expected" />
-    <None Include="tests\test_realnum_03.output" />
     <None Include="tests\test_realnum_03.txt.expected" />
   </ItemGroup>
   <ItemGroup>
