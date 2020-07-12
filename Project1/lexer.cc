@@ -92,9 +92,11 @@ Token LexicalAnalyzer::ScanNumber()
     tmp.lexeme += c;
     if (c == '0') {
         input.GetChar(c);
+        //Period found after 0
         if (!input.EndOfInput() && c == '.') {
             tmp.lexeme += '.';
             input.GetChar(c);
+            //Scan numbers after 0
             while (!input.EndOfInput() && c == '0') {
                 tmp.lexeme += c;
                 input.GetChar(c);
@@ -104,13 +106,14 @@ Token LexicalAnalyzer::ScanNumber()
                     tmp.lexeme += c;
                     input.GetChar(c);
                 }
-                if (!input.EndOfInput()) {
-                    input.UngetChar(c);
-                }
-                tmp.token_type = REALNUM;
-                tmp.line_no = line_no;
-                return tmp;
+
             }
+            if (!input.EndOfInput()) {
+                input.UngetChar(c);
+            }
+            tmp.token_type = REALNUM;
+            tmp.line_no = line_no;
+            return tmp;
         }
         else {
             if (!input.EndOfInput()) {
@@ -128,6 +131,7 @@ Token LexicalAnalyzer::ScanNumber()
             input.UngetChar(c);
         }
         input.GetChar(c);
+        //Period found after number
         if (!input.EndOfInput() && c == '.') {
             tmp.lexeme += '.';
             afterDot = false;

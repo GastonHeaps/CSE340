@@ -77,6 +77,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>a</TargetName>
     <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <AdditionalSourcesToCopyMapping>
+    </AdditionalSourcesToCopyMapping>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>a</TargetName>
@@ -91,39 +93,94 @@
     <ClInclude Include="lexer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="a.out" />
-    <None Include="bin\x64\Debug\a.out" />
     <None Include="test1.sh">
-      <DeploymentContent>false</DeploymentContent>
+      <FileType>Script</FileType>
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
     </None>
-    <None Include="tests\test_base08num_01.txt.expected" />
-    <None Include="tests\test_base08num_02.txt.expected" />
-    <None Include="tests\test_base08num_03.txt.expected" />
-    <None Include="tests\test_base16num_01.txt.expected" />
-    <None Include="tests\test_base16num_02.txt.expected" />
-    <None Include="tests\test_base16num_03.txt.expected" />
-    <None Include="tests\test_mixed_01.txt.expected" />
-    <None Include="tests\test_mixed_02.txt.expected" />
-    <None Include="tests\test_mixed_03.txt.expected" />
-    <None Include="tests\test_realnum_01.txt.expected" />
-    <None Include="tests\test_realnum_02.txt.expected" />
-    <None Include="tests\test_realnum_03.txt.expected" />
+    <Text Include="tests\test_base08num_01.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base08num_02.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base08num_03.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base16num_01.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base16num_02.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base16num_03.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_mixed_01.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_mixed_02.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_mixed_03.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_realnum_01.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_realnum_02.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_realnum_03.txt.expected">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base08num_01.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base08num_02.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base08num_03.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base16num_01.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base16num_02.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_base16num_03.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_mixed_01.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_mixed_02.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_mixed_03.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_realnum_01.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_realnum_02.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
+    <Text Include="tests\test_realnum_03.txt">
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="tests\test_base08num_01.txt" />
-    <Text Include="tests\test_base08num_02.txt" />
-    <Text Include="tests\test_base08num_03.txt" />
-    <Text Include="tests\test_base16num_01.txt" />
-    <Text Include="tests\test_base16num_02.txt" />
-    <Text Include="tests\test_base16num_03.txt" />
-    <Text Include="tests\test_mixed_01.txt" />
-    <Text Include="tests\test_mixed_02.txt" />
-    <Text Include="tests\test_mixed_03.txt" />
-    <Text Include="tests\test_realnum_01.txt" />
-    <Text Include="tests\test_realnum_02.txt" />
-    <Text Include="tests\test_realnum_03.txt" />
-  </ItemGroup>
-  <ItemDefinitionGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <RemotePostBuildEvent>
+      <Command>cp $(RemoteTargetPath) $(RemoteProjectDir)</Command>
+      <AdditionalSourcesToCopyMapping>
+      </AdditionalSourcesToCopyMapping>
+    </RemotePostBuildEvent>
+    <PostBuildEvent>
+      <AdditionalSourcesToCopyMapping>
+      </AdditionalSourcesToCopyMapping>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
