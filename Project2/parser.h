@@ -36,7 +36,6 @@ class SymbolTable {
     private:
         symbolTable* head;
         symbolTable* temp;
-        symbolTable* n;
         symbolTable* pointer;
     public:
         std::string currentScope;
@@ -55,8 +54,6 @@ public:
     void parse_program();
     void print();
 
-    
-
 private:
     void parse_global_vars();
     void parse_var_list();
@@ -66,16 +63,11 @@ private:
     void parse_stmt_list();
     void parse_stmt();
     void syntax_error();
-    void addString(std::string);
-    //void searchList(std::string);
 
     LexicalAnalyzer lexer; 
     Token token;
     SymbolTable table;
-    printOutput* stringHead;
-    printOutput* stringTemp;
-    printOutput* stringNew;
-
+    std::string assignments;
 };
 
 #endif  //__PARSER__H__

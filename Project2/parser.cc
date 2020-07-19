@@ -9,8 +9,6 @@
 
 using namespace std;
 
-string line = "ERROR";
-
 SymbolTable::SymbolTable()
 {
 	head = new symbolTable;
@@ -83,12 +81,7 @@ string SymbolTable::searchList(string variable) {
 
 Parser::Parser()
 {
-	line = "ERROR";
-	stringNew = new printOutput;
-	stringNew->next = NULL;
-	stringNew->line = "BRAND NEW LIST";
-	stringHead = stringNew;
-	stringTemp = stringNew;
+	assignments = "";
 }
 
 void Parser::parse_program()
@@ -96,7 +89,6 @@ void Parser::parse_program()
 {
 	bool scopeParsed = false;
 	token = lexer.GetToken();
-	//cerr << "program -> ";
 	if (token.token_type == ID) {
 		Token token2 = lexer.GetToken();
 		if (token2.token_type == COMMA || token2.token_type == SEMICOLON) {
@@ -119,7 +111,7 @@ void Parser::parse_program()
 
 	token = lexer.GetToken();
 	if (token.token_type == LBRACE || scopeParsed) {
-		//cout << "parse_program ->\n";
+		//End found
 	}
 	else {
 		syntax_error();
@@ -130,7 +122,6 @@ void Parser::parse_global_vars()
 //global_vars -> epsilon
 //global_vars -> var_list SEMICOLON
 {
-	cerr << "global vars ->";
 	token = lexer.GetToken();
 	if (token.token_type == ID) {
 		lexer.UngetToken(token);
@@ -142,7 +133,7 @@ void Parser::parse_global_vars()
 
 	token = lexer.GetToken();
 	if (token.token_type == SEMICOLON) {
-		cerr << " " << token.token_type;
+		//End found
 	}
 	else {
 		syntax_error();
@@ -155,15 +146,12 @@ void Parser::parse_var_list()
 {
 	token = lexer.GetToken();
 	if (token.token_type == ID) {
-		cerr << " " << token.lexeme;
 		table.addItem(token.lexeme, table.currentScope, table.currentAccess);
 		token = lexer.GetToken();
 		if (token.token_type == COMMA) {
-			cerr << " " << token.token_type;
 			parse_var_list();
 		}
 		else if (token.token_type == SEMICOLON) {
-			cerr << " " << token.token_type;
 			lexer.UngetToken(token);
 		}
 	}
@@ -178,18 +166,14 @@ void Parser::parse_scope()
 	token = lexer.GetToken();
 	if (token.token_type == ID) {
 		table.currentScope = token.lexeme;
-		cerr << "\n\tscope ->";
-		cerr << " " << token.lexeme;
 		token = lexer.GetToken();
 		if (token.token_type == LBRACE) {
-			cerr << " " << token.token_type;
 			parse_public_vars();
 			parse_private_vars();
 			parse_stmt_list();
 			token = lexer.GetToken();
 			if (token.token_type == RBRACE) {
-				cerr << " " << token.token_type;
-				//cout << "scope parsed\n";
+			//End found
 			}
 			else {
 				syntax_error();
@@ -216,7 +200,6 @@ void Parser::parse_public_vars()
 			token = lexer.GetToken();
 			if (token.token_type == ID) {
 				lexer.UngetToken(token);
-				cerr << "\n\tpublic_vars ->";
 				parse_var_list();
 			}
 			else {
@@ -234,8 +217,6 @@ void Parser::parse_public_vars()
 
 	token = lexer.GetToken();
 	if (token.token_type == SEMICOLON) {
-		//cout << "public parsed\n";
-		cerr << " " << token.token_type;
 	}
 	else {
 		syntax_error();
@@ -254,7 +235,6 @@ void Parser::parse_private_vars()
 			token = lexer.GetToken();
 			if (token.token_type == ID) {
 				lexer.UngetToken(token);
-				cerr << "\n\tprivate_vars ->";
 				parse_var_list();
 			}
 			else {
@@ -272,8 +252,7 @@ void Parser::parse_private_vars()
 
 	token = lexer.GetToken();
 	if (token.token_type == SEMICOLON) {
-		//cout << "private_vars parsed\n";
-		cerr << " " << token.token_type;
+		//End found
 	}
 	else {
 		syntax_error();
@@ -304,9 +283,7 @@ void Parser::parse_stmt_list()
 		}
 		else {
 			lexer.UngetToken(token);
-			//cout << "stmt_list parsed\n";
 		}
-
 	}
 }
 
@@ -325,8 +302,7 @@ void Parser::parse_stmt()
 				syntax_error();
 			}
 			else {
-				line = table.searchList(token.lexeme) + " = " + table.searchList(token3.lexeme) + "\n";
-				addString(line);
+				assignments += table.searchList(token.lexeme) + " = " + table.searchList(token3.lexeme) + "\n";
 			}
 		}
 		else if (token2.token_type == LBRACE) {
@@ -341,7 +317,6 @@ void Parser::parse_stmt()
 	else {
 		lexer.UngetToken(token);
 	}
-
 }
 
 void Parser::syntax_error()
@@ -350,28 +325,10 @@ void Parser::syntax_error()
 	exit(1);
 }
 
-void Parser::addString(string s) {
-	if (stringHead->line == "BRAND NEW LIST") {
-		stringNew->line = s;
-	}
-	else {
-		stringNew = new printOutput;
-		stringNew->line = s;
-		stringTemp->next = stringNew;
-		stringNew->next = NULL;
-		stringTemp = stringTemp->next;
-	}
-}
 
 void Parser::print() {
 	parse_program();
-	
-	stringTemp = stringHead;
-	while (stringTemp != NULL) {
-		cout << stringTemp->line;
-		stringTemp = stringTemp->next;
-	}
-	
+	cout << assignments;
 }
 
 int main()
