@@ -107,18 +107,19 @@
   </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="inputbuf.h" />
-    <ClInclude Include="lexer.h" />
-    <ClInclude Include="parser.h" />
+    <ClInclude Include="parser_Heaps.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="inputbuf.cc" />
-    <ClCompile Include="lexer.cc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug UnitTests|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="parser.cc" />
+    <ClCompile Include="parser_Heaps.cc" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="tests\test.txt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <RemoteCopyFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyFile>
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
+    </Text>
     <Text Include="tests\test_comments_01.txt">
       <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RemoteCopyToOutputDir>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
@@ -180,6 +181,9 @@
       <Command>
       </Command>
     </PostBuildEvent>
+    <ClCompile>
+      <CppLanguageStandard>c++98</CppLanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -1,8 +1,3 @@
-/*
- * Copyright (C) Rida Bazzi, 2016
- *
- * Do not share this file with anyone
- */
 #ifndef __LEXER__H__
 #define __LEXER__H__
 
@@ -12,7 +7,6 @@
 #include "inputbuf.h"
 
 
- // ------- token types -------------------
 
 typedef enum {
     END_OF_FILE = 0,
@@ -47,6 +41,5 @@ private:
     TokenType FindKeywordIndex(std::string);
     Token ScanIdOrKeyword();
 };
-
 
 #endif  //__LEXER__H__

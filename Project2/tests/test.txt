@@ -1,0 +1,6 @@
+age, ten;
+
+hello {
+	private: age, ten;
+  age = ten;
+}
